@@ -1,0 +1,109 @@
+<!-- 
+// coolui-scroller组件
+// 展示下拉加载和刷新
+// 根据不同的选择暂时不同的动画效果
+ -->
+<scroll-view scroll-x="true" enable-flex="true" style="white-space: nowrap;">
+  <!-- 导航 -->
+  <view class="tabs">
+    <view wx:for="{{tabs}}" wx:key="index" 
+      class="tabs-item {{currentIndex==index?'activeClass':''}}" bindtap="change" 
+      data-index="{{index}}">
+      {{item}}        
+    </view>
+    <view class='tab-bottom' style="left:{{left}}px"></view>
+  </view>
+  
+</scroll-view>
+
+<block wx:if="{{active == 0}}">
+	<view class="scroll-demo1">
+		<coolui-scroll class="demo1"  scrollOption="{{scroll}}" bindrefresh="refresh" bindloadMore="loadMore">
+			<view class="list-inner" slot="inner">
+				<view class="item" wx:for="{{list}}" wx:key="unique">
+					第{{index + 1}}条内容
+				</view>
+			</view>
+		</coolui-scroll>
+	</view>
+</block>
+<block wx:elif="{{active == 1}}">
+	<view class="scroll-demo1" hover-class="none" hover-stop-propagation="false">
+		<coolui-scroll class="demo1"  scrollOption="{{scrollDiy}}" bindrefresh="refreshDiy" bindloadMore="loadMoreDiy" background="#fff">
+			<view class="list-inner" slot="inner">
+				<view class="item" wx:for="{{diyList}}" wx:key="unique">
+					第{{index + 1}}条内容
+				</view>
+			</view>
+			<view class="diyload" slot="loadmore">
+				<image class="ico" mode="aspectFill" src="http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif" />
+				上拉加载中
+			</view>
+		</coolui-scroll>
+	</view>
+</block>
+<block wx:elif="{{active == 2}}">
+	<view class="scroll-demo1">
+		<coolui-scroll class="demo1"  scrollOption="{{scrollTm}}" bindrefresh="refreshTm" bindloadMore="loadMoreTm">
+			<view class="list-inner" slot="inner">
+				<view class="item" wx:for="{{tmList}}" wx:key="unique">
+					第{{index + 1}}条内容
+				</view>
+			</view>
+		</coolui-scroll>
+	</view>
+</block>
+<block wx:elif="{{active == 3}}">
+	<view class="scroll-demo1 jingdong">
+		<coolui-scroll class="demo1"  scrollOption="{{scrollJd}}" bindrefresh="refreshJd" bindloadMore="loadMoreJd" bindrefreshPulling="refreshPulling">
+			<view class="refresh" slot="refresh">
+				<view class="wapper">
+					<view class="img" wx:if="{{scrollJd.refresh.p == 1}}" />
+					<block wx:else>
+						<view class="moveimg" style="transform: scale({{scrollJd.refresh.p}}) translateX({{-100 + scrollJd.refresh.p * 100}}px);" />
+						<view class="moveimg2" style="transform: translateY({{-100 + scrollJd.refresh.p * 100}}px);" />
+					</block>
+				</view>
+				<view class="text">让购物更便捷</view>
+			</view>
+			<view class="list-inner" slot="inner">
+				<view class="item" wx:for="{{jdList}}" wx:key="unique">
+					第{{index + 1}}条内容
+				</view>
+			</view>
+		</coolui-scroll>
+	</view>
+</block>
+<block wx:elif="{{active == 4}}">
+	<view class="scroll-demo1">
+		<coolui-scroll class="demo1"  scrollOption="{{scrollHuojian}}" bindrefresh="refreshHuojian" bindloadMore="loadMoreHuojian" bindrefreshPulling="refreshHuojianPulling" background="#fff">
+			<view class="refresh huojian-refresh" slot="refresh">
+				<view class="yuan {{scrollHuojian.refresh.p == 1?'on':''}}" style="border-radius: {{(scrollHuojian.refresh.p) * 150}}vw;" />
+				<view class="huojian {{scrollHuojian.refresh.p == 1?'on':''}}" />
+				<view class="yun {{scrollHuojian.refresh.p == 1?'on':''}}" />
+			</view>
+			<view class="list-inner" slot="inner">
+				<view class="item" wx:for="{{huojianList}}" wx:key="unique">
+					第{{index + 1}}条内容
+				</view>
+			</view>
+			<view class="diyload" slot="loadmore">
+				<image class="ico" mode="aspectFill" src="http://upload-images.jianshu.io/upload_images/5726812-95bd7570a25bd4ee.gif" />
+				上拉加载中
+			</view>
+		</coolui-scroll>
+	</view>
+</block>
+<block wx:elif="{{active == 5}}">
+	<view class="scroll-demo1 duanwu">
+		<coolui-scroll class="demo1"  scrollOption="{{scrollDuanwu}}" bindrefresh="refreshDuanwu" bindloadMore="loadMoreDuanwu">
+			<view class="list-inner" slot="inner">
+				<view class="item" wx:for="{{dwList}}" wx:key="unique">
+					第{{index + 1}}条内容
+				</view>
+			</view>
+		</coolui-scroll>
+	</view>
+</block>
+
+<!-- 展示下拉加载和刷新end -->

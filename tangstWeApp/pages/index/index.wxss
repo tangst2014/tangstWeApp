@@ -1,0 +1,41 @@
+.tabs{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding-bottom: 20rpx;
+  
+}
+.tabs .tabs-item{
+  margin-right: 20rpx;
+}
+.scroll-demo1{
+  height: calc(100vh - 120rpx);
+}
+.list-inner .item{
+  padding: 42rpx 0;
+}
+.activeClass{
+  color: pink;
+  border-bottom: 3px solid pink;
+  transition: all .3s linear;
+}
+/* 底部图片加载哦 */
+.diyload {
+    text-align: center;
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 40rpx 0;
+    color: #999;
+    font-size: 28rpx;
+    background-color: #59627c;
+}
+
+.diyload .ico {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    margin-right: 10px;
+    -webkit-transform: translateY(-1px);
+    transform: translateY(-1px)
+}
+/* 底部图片加载哦end */
